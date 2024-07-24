@@ -1,13 +1,20 @@
 import { Text, View, Image, ScrollView, SafeAreaView } from "react-native";
 import React from "react";
 import Custombutton from "../components/customButton";
+import { Redirect, router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { useGlobalContext } from "../context/GlobalProvider";
 
 const Motv = () => {
+  const { isLoading, isLogged } = useGlobalContext();
+
+  if (!isLoading && isLogged)  return <Redirect href="/home" />;
+
   return (
     <SafeAreaView>
       <ScrollView>
-        <View className="flex-1  h-screen items-center justify-around ">
-          <View className="gap-y-5">
+        <View className="flex-1  min-h-screen items-center justify-around ">
+          <View className="gap-y-5 mt-4">
             <Image
               source={require("../assets/images/icon.png")}
               resizeMode="contain"
@@ -34,11 +41,17 @@ const Motv = () => {
             </View>
           </View>
           <View className="gap-y-4 flex-1 justify-end">
-            <Custombutton text="Get started" />
+            <Custombutton
+              text="Get started"
+              Handlepress={() => {
+                return router.push("/sign-in");
+              }}
+            />
             <Text className="text-secondary text-center">&copy;Gunture17</Text>
           </View>
         </View>
       </ScrollView>
+      <StatusBar style="dark" />
     </SafeAreaView>
   );
 };
