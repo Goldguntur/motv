@@ -1,10 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import { Tabs } from "expo-router";
 import React from "react";
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Image, Text, View } from "react-native";
 import icons from "../../constants/icons";
+
+import HomeScreen from "./home";
+import Search from "./search";
+import Favorite from "./favorite";
+import Setting from "./setting";
+import MovieDetail from "./movieDetail";
 
 interface TabIconProps {
   icon: any;
@@ -31,11 +40,85 @@ const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
     </View>
   );
 };
+
+const homeStack = createNativeStackNavigator();
+
+function HomeStack() {
+  return (
+    <homeStack.Navigator>
+      <homeStack.Screen
+        name="home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <homeStack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{ headerShown: false }}
+      />
+    </homeStack.Navigator>
+  );
+}
+
+const searchStack = createNativeStackNavigator();
+
+function SearchStack() {
+  return (
+    <searchStack.Navigator>
+      <searchStack.Screen
+        name="search"
+        component={Search}
+        options={{ headerShown: false }}
+      />
+      <searchStack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{ headerShown: false }}
+      />
+    </searchStack.Navigator>
+  );
+}
+
+const favoriteStack = createNativeStackNavigator();
+
+function FavoriteStack() {
+  return (
+    <favoriteStack.Navigator>
+      <favoriteStack.Screen
+        name="favorite"
+        component={Favorite}
+        options={{ headerShown: false }}
+      />
+      <favoriteStack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{ headerShown: false }}
+      />
+    </favoriteStack.Navigator>
+  );
+}
+
+const settingStack = createNativeStackNavigator();
+
+function SettingStack() {
+  return (
+    <settingStack.Navigator>
+      <settingStack.Screen
+        name="setting"
+        component={Setting}
+        options={{ headerShown: false }}
+      />
+    </settingStack.Navigator>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   return (
-    <>
-      <Tabs
+    <NavigationContainer independent>
+      <Tab.Navigator
         screenOptions={{
           tabBarActiveTintColor: "#f01e2c",
           tabBarInactiveTintColor: "#fff",
@@ -48,8 +131,8 @@ export default function TabLayout() {
           },
         }}
       >
-        <Tabs.Screen
-          name="home"
+        <Tab.Screen
+          name="Home"
           options={{
             title: "Home",
             headerShown: false,
@@ -62,9 +145,10 @@ export default function TabLayout() {
               />
             ),
           }}
+          component={HomeStack}
         />
-        <Tabs.Screen
-          name="search"
+        <Tab.Screen
+          name="Search"
           options={{
             title: "Search",
             headerShown: false,
@@ -77,9 +161,10 @@ export default function TabLayout() {
               />
             ),
           }}
+          component={SearchStack}
         />
-        <Tabs.Screen
-          name="favorite"
+        <Tab.Screen
+          name="Favorite"
           options={{
             title: "Favorite",
             headerShown: false,
@@ -92,9 +177,10 @@ export default function TabLayout() {
               />
             ),
           }}
+          component={FavoriteStack}
         />
-        <Tabs.Screen
-          name="setting"
+        <Tab.Screen
+          name="Setting"
           options={{
             title: "Setting",
             headerShown: false,
@@ -107,9 +193,10 @@ export default function TabLayout() {
               />
             ),
           }}
+          component={SettingStack}
         />
-      </Tabs>
+      </Tab.Navigator>
       <StatusBar backgroundColor="#161622" style="light" />
-    </>
+    </NavigationContainer>
   );
 }

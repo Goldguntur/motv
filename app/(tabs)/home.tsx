@@ -14,13 +14,13 @@ export default function HomeScreen() {
 
   // useEffect(() => {
   return (
-    <View className="flex-1">
+    <View className="flex-1 ">
       <ScrollView>
-        <View className="flex flex-row justify-center py-8">
+        <View className="flex flex-row justify-center pt-4">
           <Image
             source={require("../../assets/images/icon.png")}
             resizeMode="contain"
-            className="w-24 h-24"
+            className="w-24 h-24 "
           />
         </View>
         <View>

@@ -17,7 +17,9 @@ const MoviesSection = ({ data, title }: Props) => {
 
   return (
     <View>
-      <Text className="text-xl font-bold text-primary p-4">{title}</Text>
+      <Text className="text-2xl  text-primary p-4 font-montserrat capitalize font-medium">
+        {title}
+      </Text>
       <Carousel
         data={data}
         renderItem={({ item }: { item: any[] }) => <MovieCard item={item} />}
@@ -57,7 +59,9 @@ const MovieCard = ({ item }: MovieCardProps) => {
   const navigation = useNavigation();
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate("Detail", { item })}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("MovieDetail", { item })}
+      >
         <Image
           source={require("../assets/images/tlotr.jpg")} // Menggunakan URL gambar dari item
           resizeMode="contain"
