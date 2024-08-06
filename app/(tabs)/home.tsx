@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Image, View, Text, ScrollView } from "react-native";
 
 import MoviesSection from "../../components/moviesSection";
+import MovieList from "@/components/MovieList";
 
 // interface Movie {
 //   id: number;
@@ -11,6 +12,7 @@ import MoviesSection from "../../components/moviesSection";
 
 export default function HomeScreen() {
   const [latestUpdate, setLatestUpdate] = useState([1, 2, 3]);
+  const [trending, setTrending] = useState([1, 2, 3]);
 
   // useEffect(() => {
   return (
@@ -25,6 +27,7 @@ export default function HomeScreen() {
         </View>
         <View>
           <MoviesSection title="Latest Update" data={latestUpdate} />
+          <MovieList title="Trending" item={trending} />
         </View>
       </ScrollView>
     </View>
