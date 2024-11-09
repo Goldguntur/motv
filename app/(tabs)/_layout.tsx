@@ -14,6 +14,7 @@ import Search from "./search";
 import Favorite from "./favorite";
 import Setting from "./setting";
 import MovieDetail from "./movieDetail";
+import Person from "./person";
 
 interface TabIconProps {
   icon: any;
@@ -56,6 +57,12 @@ function HomeStack() {
         component={MovieDetail}
         options={{ headerShown: false }}
       />
+
+      <homeStack.Screen
+        name="person"
+        component={Person}
+        options={{ headerShown: false }}
+      />
     </homeStack.Navigator>
   );
 }
@@ -73,6 +80,11 @@ function SearchStack() {
       <searchStack.Screen
         name="MovieDetail"
         component={MovieDetail}
+        options={{ headerShown: false }}
+      />
+      <searchStack.Screen
+        name="Person"
+        component={Person}
         options={{ headerShown: false }}
       />
     </searchStack.Navigator>

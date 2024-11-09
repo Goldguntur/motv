@@ -40,7 +40,7 @@ const MovieList = ({ title, item }: Props) => {
           <TouchableWithoutFeedback
             key={index}
             className="px-2"
-            onPress={() => navigation.navigate("MovieDetail", { item })}
+            onPress={() => navigation.push("MovieDetail", { item })}
           >
             <View className="flex ">
               <Image

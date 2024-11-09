@@ -24,6 +24,9 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [fontsLoaded, error] = useFonts({
     "Montserrat-Regular": require("../assets/fonts/Montserrat-Regular.ttf"),
+    "Montserrat-Bold": require("../assets/fonts/Montserrat-Bold.ttf"),
+    "Montserrat-SemiBold": require("../assets/fonts/Montserrat-SemiBold.ttf"),
+    "Montserrat-Italic": require("../assets/fonts/Montserrat-Italic.ttf"),
   });
 
   useEffect(() => {

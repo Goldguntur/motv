@@ -13,7 +13,7 @@ interface Props {
 const MoviesSection = ({ data, title }: Props) => {
   if (!data || !Array.isArray(data)) return null;
 
-  const [activeDotIndex, setActiveDotIndex] = useState(0);
+  const [activeDotIndex, setActiveDotIndex] = useState(1);
 
   return (
     <View>
@@ -60,7 +60,7 @@ const MovieCard = ({ item }: MovieCardProps) => {
   return (
     <View>
       <TouchableOpacity
-        onPress={() => navigation.navigate("MovieDetail", { item })}
+        onPress={() => navigation.push("MovieDetail", { item })}
       >
         <Image
           source={require("../assets/images/tlotr.jpg")} // Menggunakan URL gambar dari item
